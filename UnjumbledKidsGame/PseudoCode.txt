@@ -1,0 +1,8 @@
+﻿Create an array of words in an external file if possible
+Read the contents of the file into an array
+Create a random variable with a range from 0 to the length of the array -1
+Use the random variable generated to act as reference index to the array
+Take the word selected and parse it into a char array... 
+Jumble the word
+And ask user to find word.
+If user's guess is right, print "Correct"

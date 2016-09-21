@@ -1,0 +1,7 @@
+C:\Users\Kowus\Documents\Visual Studio 2012\Projects\UnjumbledKidsGame\UnjumbledKidsGame\bin\Debug\UnjumbledKidsGame.exe.config
+C:\Users\Kowus\Documents\Visual Studio 2012\Projects\UnjumbledKidsGame\UnjumbledKidsGame\bin\Debug\UnjumbledKidsGame.exe
+C:\Users\Kowus\Documents\Visual Studio 2012\Projects\UnjumbledKidsGame\UnjumbledKidsGame\bin\Debug\UnjumbledKidsGame.pdb
+C:\Users\Kowus\Documents\Visual Studio 2012\Projects\UnjumbledKidsGame\UnjumbledKidsGame\obj\Debug\UnjumbledKidsGame.csprojResolveAssemblyReference.cache
+C:\Users\Kowus\Documents\Visual Studio 2012\Projects\UnjumbledKidsGame\UnjumbledKidsGame\obj\Debug\UnjumbledKidsGame.exe
+C:\Users\Kowus\Documents\Visual Studio 2012\Projects\UnjumbledKidsGame\UnjumbledKidsGame\obj\Debug\UnjumbledKidsGame.pdb
+C:\Users\Kowus\Documents\Visual Studio 2012\Projects\UnjumbledKidsGame\UnjumbledKidsGame\bin\Debug\Dictionary.txt

@@ -5,4 +5,5 @@ Use the random variable generated to act as reference index to the array
 Take the word selected and parse it into a char array... 
 Jumble the word
 And ask user to find word.
+Display the definition of the word
 If user's guess is right, print "Correct"

@@ -11,70 +11,80 @@ namespace UnjumbledKidsGame
     class Program
     {
         private static bool bimus = true;
+        public static string apiKey = "501c8e7f-7e3c-4b25-99f4-1fa965e08bcb";
+        private static StreamWriter myWriter = new StreamWriter("definition.xml");
         static void Main(string[] args)
         {
 
             //bool bimus2 = true;
-
-            while (bimus)
+            try
             {
-                string address = "";
-
-                string[] myReader = File.ReadAllLines("Dictionary.txt");
-
-                Random myRandom = new Random();
-                Random myOtherRandom = new Random();
-
-                int shnd = myReader.Length - 1;
-                var randomIndex = myRandom.Next(0, shnd);
-                var randomIndex2 = 0;
-
-
-
-                string genWord = myReader[randomIndex];
-
-
-                while (genWord.Length < 4)
+                while (bimus)
                 {
-                    randomIndex = myRandom.Next(0, shnd);
-                    genWord = myReader[randomIndex];
-                }
-                Console.WriteLine("{0}\n", genWord);
-                char[] strayWord = genWord.ToCharArray();
 
-                for (int i = 0; i < strayWord.Length * 100; i++)
-                {
-                    randomIndex = myRandom.Next(0, strayWord.Length - 1);
-                    randomIndex2 = myOtherRandom.Next(0, strayWord.Length - 1);
 
-                    while (randomIndex2 == randomIndex)
+                    string[] myReader = File.ReadAllLines("Dictionary.txt");
+                    
+
+                    Random myRandom = new Random();
+                    Random myOtherRandom = new Random();
+
+                    int shnd = myReader.Length - 1;
+                    var randomIndex = myRandom.Next(0, shnd);
+                    var randomIndex2 = 0;
+
+
+
+                    string genWord = myReader[randomIndex];
+
+
+                    while (genWord.Length < 4)
                     {
-                        randomIndex2 = myOtherRandom.Next(0, strayWord.Length - 1);
+                        randomIndex = myRandom.Next(0, shnd);
+                        genWord = myReader[randomIndex];
                     }
-                    var temp = strayWord[randomIndex];
-                    strayWord[randomIndex] = strayWord[randomIndex2];
-                    strayWord[randomIndex2] = temp;
-                }
-                Console.Write("Guess what word ");
-                foreach (var item in strayWord)
-                {
-                    Console.Write(item);
-                }
+                    Console.WriteLine("{0}\n", genWord);
+                    char[] strayWord = genWord.ToCharArray();
+
+                    for (int i = 0; i < strayWord.Length * 100; i++)
+                    {
+                        randomIndex = myRandom.Next(0, strayWord.Length - 1);
+                        randomIndex2 = myOtherRandom.Next(0, strayWord.Length - 1);
+
+                        while (randomIndex2 == randomIndex)
+                        {
+                            randomIndex2 = myOtherRandom.Next(0, strayWord.Length - 1);
+                        }
+                        var temp = strayWord[randomIndex];
+                        strayWord[randomIndex] = strayWord[randomIndex2];
+                        strayWord[randomIndex2] = temp;
+                    }
+                    Console.Write("Guess what word ");
+                    foreach (var item in strayWord)
+                    {
+                        Console.Write(item);
+                    }
 
 
-                Console.WriteLine(" is\n");
-                getDef(genWord);
-                string guess = Console.ReadLine().ToLower();
+                    Console.WriteLine(" is\n");
+                    getDef(genWord);
+                    string guess = Console.ReadLine().ToLower();
 
-                while (guess != genWord.ToLower())
-                {
-                    Console.Write("try again: ");
-                    guess = Console.ReadLine();
+                    while (guess != genWord.ToLower())
+                    {
+                        Console.Write("try again: ");
+                        guess = Console.ReadLine();
+                    }
+                    endGame();
+
+
+
                 }
-                endGame();
-                
-                
-                
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                //Console.ReadLine();
             }
         }
 
@@ -97,13 +107,15 @@ namespace UnjumbledKidsGame
             }
         }
 
-        public static void getDef(string address)
+        public static void getDef(string wordQuery)
         {
             WebClient client = new WebClient();
-            string defWord = "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/" + address + "?key=501c8e7f-7e3c-4b25-99f4-1fa965e08bcb";
-            string reply = client.DownloadString(defWord);
+            string address = "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/" + wordQuery + "?key=" + apiKey;
+            string reply = client.DownloadString(address);
 
-            Console.WriteLine(reply);
+            myWriter.WriteLine(reply);
+            //Console.WriteLine(reply);
+            myWriter.Close();
         }
     }
 }

@@ -115,7 +115,7 @@ namespace UnjumbledKidsGame
             WebClient client = new WebClient();
             string address = "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/" + wordQuery + "?key=" + apiKey;
             string reply = client.DownloadString(address);
-            XmlDocument doc = XmlDocument.Load(reply);
+            XmlDocument doc = XmlDocument.LoadXml(reply);
             IEnumerable<string> definitions = getDefinitions(doc);
 
             myWriter.WriteLine(reply);

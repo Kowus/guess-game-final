@@ -5,11 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Net;
+using System.Xml
 
 namespace UnjumbledKidsGame
 {
     class Program
     {
+
+        private static readonly string definitionsXpath = "/entry_list/entry/def/dt"
         private static bool bimus = true;
         public static string apiKey = "501c8e7f-7e3c-4b25-99f4-1fa965e08bcb";
         private static StreamWriter myWriter = new StreamWriter("definition.xml");
@@ -112,10 +115,17 @@ namespace UnjumbledKidsGame
             WebClient client = new WebClient();
             string address = "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/" + wordQuery + "?key=" + apiKey;
             string reply = client.DownloadString(address);
+            XmlDocument doc = XmlDocument.Load(reply);
+            IEnumerable<string> definitions = getDefinitions(doc);
 
             myWriter.WriteLine(reply);
             //Console.WriteLine(reply);
             myWriter.Close();
+        }
+
+        private static IEnumerable<string> getDefinitions(XmlDocument document){
+            var nodes = document.selectNodes(definitionsXpath);
+            return from node in nodes select node.innerText;
         }
     }
 }
